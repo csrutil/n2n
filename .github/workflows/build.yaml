@@ -61,6 +61,11 @@ jobs:
 
     - name: Compile
       run: |
+        url=${{ matrix.sdk_url }}
+        sdk=$(basename $url | awk -F '.tar.xz' '{ print $1 }')
+
+        cd $sdk
+
         echo 'CONFIG_PACKAGE_n2n-edge=m' > .config
         echo 'CONFIG_PACKAGE_n2n-supernode=m' >> .config
         make defconfig
