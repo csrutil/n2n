@@ -45,13 +45,13 @@ jobs:
 
     - name: Patch file
       run: |
-        git clone --depth 1 https://github.com/ntop/n2n -b 3.0
+        git clone --depth 1 https://github.com/ntop/n2n -b 3.0 /tmp/n2n
 
         url=${{ matrix.sdk_url }}
         sdk=$(basename $url | awk -F '.tar.xz' '{ print $1 }')
 
         cd $sdk/package
-        cp -r ${{ github.workspace }}/packages/openwrt .
+        cp -r /tmp/n2n/packages/openwrt .
         mv openwrt n2n
         cd n2n
         rm -rf patches
