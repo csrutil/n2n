@@ -2,7 +2,7 @@
 
 n2n, supernode for OpenWrt
 
-[![Build r8125 kernel module](https://github.com/csrutil/r8125/actions/workflows/build.yaml/badge.svg)](https://github.com/csrutil/r8125/actions/workflows/build.yaml)
+[![Build n2n for OpenWrt](https://github.com/csrutil/n2n/actions/workflows/build.yaml/badge.svg)](https://github.com/csrutil/n2n/actions/workflows/build.yaml)
 
 ## How to use it
 
