@@ -62,19 +62,18 @@ jobs:
         # optimization
         sed -i '/package.mk/a CONFIGURE_ARGS += --with-openssl --with-zstd' Makefile
 
-        cd $sdk
-        [[ $url == *'x86'* ]] && sed -i 's/-Os -pipe/-O3 -pipe -march=x86-64/g' Config-build.in
-        [[ $url == *'x86'* ]] && sed -i 's/-Os -pipe/-O3 -pipe -march=x86-64/g' include/target.mk
-
-        [[ $url == *'armv8'* ]] && sed -i 's/-Os -pipe/-O3 -pipe -march=armv8-a/g' Config-build.in
-        [[ $url == *'armv8'* ]] && sed -i 's/-Os -pipe/-O3 -pipe -march=armv8-a/g' include/target.mk
-
     - name: Compile
       run: |
         url=${{ matrix.sdk_url }}
         sdk=$(basename $url | awk -F '.tar.xz' '{ print $1 }')
 
         cd $sdk
+
+        [[ $url == *'x86'* ]] && sed -i 's/-Os -pipe/-O3 -pipe -march=x86-64/g' Config-build.in
+        [[ $url == *'x86'* ]] && sed -i 's/-Os -pipe/-O3 -pipe -march=x86-64/g' include/target.mk
+
+        [[ $url == *'armv8'* ]] && sed -i 's/-Os -pipe/-O3 -pipe -march=armv8-a/g' Config-build.in
+        [[ $url == *'armv8'* ]] && sed -i 's/-Os -pipe/-O3 -pipe -march=armv8-a/g' include/target.mk
 
         echo 'CONFIG_PACKAGE_n2n-edge=m' > .config
         echo 'CONFIG_PACKAGE_n2n-supernode=m' >> .config
