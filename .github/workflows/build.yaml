@@ -62,6 +62,7 @@ jobs:
         # optimization
         sed -i '/package.mk/a CONFIGURE_ARGS += --with-openssl --with-zstd' Makefile
 
+        cd $sdk
         [[ $url == *'x86'* ]] && sed -i 's/-Os -pipe/-O3 -pipe -march=x86-64/g' Config-build.in
         [[ $url == *'x86'* ]] && sed -i 's/-Os -pipe/-O3 -pipe -march=x86-64/g' include/target.mk
 
