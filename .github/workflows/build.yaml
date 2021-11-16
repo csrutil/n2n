@@ -72,8 +72,8 @@ jobs:
         [[ $url == *'targets/x86'* ]] && sed -i 's/-Os -pipe/-O3 -pipe -march=x86-64/g' Config-build.in
         [[ $url == *'targets/x86'* ]] && sed -i 's/-Os -pipe/-O3 -pipe -march=x86-64/g' include/target.mk
 
-        [[ $url == *'targets/rockchip'* ]] && sed -i 's/-Os -pipe/-O3 -pipe -march=armv8-a/g' Config-build.in
-        [[ $url == *'targets/rockchip'* ]] && sed -i 's/-Os -pipe/-O3 -pipe -march=armv8-a/g' include/target.mk
+        [[ $url == *'targets/rockchip'* ]] && sed -i 's/-Os -pipe/-O3 -pipe -march=armv8-a+crypto+crc -mcpu=cortex-a53+crypto+crc -mtune=cortex-a53/g' Config-build.in
+        [[ $url == *'targets/rockchip'* ]] && sed -i 's/-Os -pipe/-O3 -pipe -march=armv8-a+crypto+crc -mcpu=cortex-a53+crypto+crc -mtune=cortex-a53/g' include/target.mk
 
         echo 'CONFIG_PACKAGE_n2n-edge=m' > .config
         echo 'CONFIG_PACKAGE_n2n-supernode=m' >> .config
